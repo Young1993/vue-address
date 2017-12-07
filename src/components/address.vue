@@ -117,16 +117,20 @@ export default {
             console.log(e.target.innerText)
             this.detail = e.target.innerText
             this.changeSelect()
+            this.closeSelect()
+        },
+        closeSelect () {
             setTimeout(() => {
                 this.$nextTick(() => {
                     this.$emit('close', this.province)
                 })
-            }, 150)
+            }, 200)
         },
         changeSelect () {
             this.$nextTick(() => {
                 if (specAddress.indexOf(this.province) > -1) {
                     this.$emit('change', this.province)
+                    this.closeSelect()
                 } else {
                     this.$emit('change', `${this.province}${this.city}${this.detail}`)
                 }
