@@ -5,16 +5,16 @@
 
 ## install
 
->npm install vue-address --save
+>npm install vue-address-tky --save
 
 ## import
 
 ```js
-import vueAddress from 'vue-address'
+import vueAddress from 'vue-address-tky'
 import "vue-select/lib/vue-address.min.css";
 ...
 
-Vue.component('vue-address', vueAddress)
+Vue.component('vue-address-tky', vueAddress)
 ```
 
 ## usage
@@ -23,13 +23,13 @@ Vue.component('vue-address', vueAddress)
 <template>
   <div id="app">
     <img src="./assets/logo.png">
-    <x-address @change="selectAddress"></x-address>
+    <x-address @change="selectAddress"  @close="closeMask"></x-address>
     <div id="address" v-text="selectedAddress"></div>
   </div>
 </template>
 
 <script>
-import xAddress from 'vue-address'
+import xAddress from 'vue-address-tky'
 
 export default {
   name: 'app',
