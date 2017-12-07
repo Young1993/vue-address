@@ -1,8 +1,8 @@
 {
-  "name": "vue-address",
-  "version": "1.0.7",
+  "name": "vue-address-tky",
+  "version": "1.0.0",
   "description": "vue-address",
-  "author": "Jogiter <jogiter.g@gmail.com>",
+  "author": "leeshimin <younglishimin@gmail.com>",
   "main": "lib/vue-address.min.js",
   "private": false,
   "scripts": {
@@ -107,7 +107,16 @@
     "component"
   ],
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/Jogiter/vue-address.git"
-  }
+    "type": "git",
+    "url": "git+https://github.com/Young1993/vue-address.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Young1993/vue-address/issues"
+  },
+  "homepage": "https://github.com/Young1993/vue-address#readme",
+  "directories": {
+    "lib": "lib",
+    "test": "test"
+  },
+  "license": "ISC"
 }

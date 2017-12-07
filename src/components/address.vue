@@ -1,6 +1,8 @@
 <template>
     <div id="select-address">
-        <select v-model="province" @change="onchange">
+      <p class="choose-distict">{{ province }}
+            {{ city }}</p>
+        <!-- <select v-model="province" @change="onchange">
             <option v-for="(item, index) in provinces" :key="index" :value="item">
                 <span>{{item}}</span>
             </option>
@@ -14,7 +16,22 @@
             <option v-for="(item, index) in details" :key="index" :value="item">
                 <span>{{item}}</span>
             </option>
-        </select>
+        </select> -->
+        <ul class="select-area">
+            <li @click="onSelectProvince" v-for="(item, index) in provinces" :key="index" :value="item">
+                <span>{{item}}</span>
+            </li>
+        </ul>
+        <ul class="select-area" v-show="showCity">
+            <li  @click="onSelectCity" v-for="(item, index) in citys" :key="index" :value="item">
+                <span>{{item}}</span>
+            </li>
+        </ul>
+        <ul class="select-area" v-show="showDetail">
+            <li  @click="onSelectDetail"  v-for="(item, index) in details" :key="index" :value="item">
+                <span>{{item}}</span>
+            </li>
+        </ul>
     </div>
 </template>
 
@@ -87,7 +104,26 @@ export default {
         }
     },
     methods: {
-        onchange () {
+        onSelectProvince (e) {
+            // console.log(e.target.innerText)
+            this.province = e.target.innerText
+            this.changeSelect()
+        },
+        onSelectCity (e) {
+            this.city = e.target.innerText
+            this.changeSelect()
+        },
+        onSelectDetail (e) {
+            console.log(e.target.innerText)
+            this.detail = e.target.innerText
+            this.changeSelect()
+            setTimeout(() => {
+                this.$nextTick(() => {
+                    this.$emit('close', this.province)
+                })
+            }, 150)
+        },
+        changeSelect () {
             this.$nextTick(() => {
                 if (specAddress.indexOf(this.province) > -1) {
                     this.$emit('change', this.province)
@@ -111,16 +147,32 @@ export default {
 
 <style scoped>
 #select-address {
-  display: block;
+  display: flex;
+  height: 240px;
+  overflow:auto;
+  flex-wrap: wrap;
 }
-#select-address select {
-  width: 100px;
-  display: inline-block;
-  height: 30px;
-  line-height: 30;
-  border-radius: 3px;
+.choose-distict{
+  width: 100%;
+  color: #FF9528;
+  font-weight: bold;
+  line-height: 32px;
+  margin:0;
 }
-#select-address select option {
-    font-size: 15px;
+.select-area{
+    margin: 0;
+    padding: 2px;
+    width: 32%
+}
+.select-area li {
+  list-style-type:none;
+  line-height: 24px;
+}
+.select-area li:active{
+  color: #fff;
+  background-color: #FF9528;
+}
+.select-area li:visited{
+  background-color: #efefef;
 }
 </style>

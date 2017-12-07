@@ -4,7 +4,6 @@ import Vue from 'vue'
 import App from './App'
 
 Vue.config.productionTip = false
-console.log('测试')
 
 /* eslint-disable no-new */
 new Vue({

@@ -1,13 +1,12 @@
 <template>
     <div id="app">
-        <x-address @change="selectAddress"></x-address>
+        <!-- <x-address @change="selectAddress"></x-address> -->
         <div id="address" v-text="selectedAddress"></div>
         <button @click="showpop">showpop</button>
         <div class="mask" v-show="popstatus">
             <div class="popup">
-                <h2>hell popup</h2>
-                <x-address @change="selectAddress"></x-address>
-                <div class="btns"><button @click="hidepop">cancel</button><button @click="hidepop">ensure</button></div>
+                <h2>选择地址</h2>
+                <x-address @change="selectAddress" @close="closeMask"></x-address>
             </div>
         </div>
     </div>
@@ -31,6 +30,9 @@
             selectAddress (address) {
                 this.selectedAddress = address
             },
+            closeMask () {
+                this.popstatus = false
+            },
             showpop () {
                 this.popstatus = true
             },
@@ -47,10 +49,10 @@
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
         color: #2c3e50;
-        margin-top: 60px;
     }
     #address {
         margin-top: 15px;
+        margin-bottom: 15px;
     }
     .mask {
         position: fixed;
@@ -62,26 +64,27 @@
     }
     .popup {
         position: absolute;
-        left: 50%;
-        top: 50%;
-        -webkit-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
+        left: 0;
+        bottom: 0;
         min-width: 200px;
         min-height: 200px;
         background-color: #fff;
-        border-radius: 10px;
         padding: 15px;
+        max-width: 100%;
     }
     @media screen and (max-width: 768px) {
         .popup {
             padding: 5px;
-            min-width: 90%;
+            min-width: 100%;
             min-height: 200px;
         }
     }
     .popup h2 {
-        margin-top: 50px;
+        margin: 0;
+        margin-bottom: 8px; 
+        font-size: 16px;
+        line-height: 24px;
+        border-bottom: solid 1px #ddd;
     }
     .popup .btns {
         margin-top: 50px;
