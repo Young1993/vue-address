@@ -1,6 +1,6 @@
 {
   "name": "vue-address-tky",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "vue-address",
   "author": "leeshimin <younglishimin@gmail.com>",
   "main": "lib/vue-address.min.js",
