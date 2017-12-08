@@ -1,7 +1,9 @@
 <template>
     <div id="select-address">
-      <p class="choose-distict">{{ province }}
-            {{ city }}</p>
+      <p class="choose-distict">选择地址 
+          <span>{{ province }} {{ city }}</span>
+
+          </p>
         <!-- <select v-model="province" @change="onchange">
             <option v-for="(item, index) in provinces" :key="index" :value="item">
                 <span>{{item}}</span>
@@ -18,17 +20,17 @@
             </option>
         </select> -->
         <ul class="select-area">
-            <li @click="onSelectProvince" v-for="(item, index) in provinces" :key="index" :value="item">
+            <li @click.stop="onSelectProvince" v-for="(item, index) in provinces" :key="index" :value="item">
                 <span>{{item}}</span>
             </li>
         </ul>
         <ul class="select-area" v-show="showCity">
-            <li  @click="onSelectCity" v-for="(item, index) in citys" :key="index" :value="item">
+            <li  @click.stop="onSelectCity" v-for="(item, index) in citys" :key="index" :value="item">
                 <span>{{item}}</span>
             </li>
         </ul>
         <ul class="select-area" v-show="showDetail">
-            <li  @click="onSelectDetail"  v-for="(item, index) in details" :key="index" :value="item">
+            <li  @click.stop="onSelectDetail"  v-for="(item, index) in details" :key="index" :value="item">
                 <span>{{item}}</span>
             </li>
         </ul>
@@ -152,25 +154,33 @@ export default {
 <style scoped>
 #select-address {
   display: flex;
-  height: 240px;
-  overflow:auto;
+  height: 250px;
   flex-wrap: wrap;
+  font-size: 14px;
 }
 .choose-distict{
   width: 100%;
-  color: #FF9528;
   font-weight: bold;
   line-height: 32px;
   margin:0;
+  margin-bottom: 8px; 
+  font-size: 16px;
+  border-bottom: solid 1px #ddd;
+}
+.choose-distict>span{
+     color: #FF9528;
 }
 .select-area{
     margin: 0;
     padding: 2px;
-    width: 32%
+    width: 32%;
+    overflow:auto;
+    height: -webkit-fill-available;
 }
 .select-area li {
   list-style-type:none;
-  line-height: 24px;
+  line-height: 28px;
+  color: #6e6e6f;
 }
 .select-area li:active{
   color: #fff;

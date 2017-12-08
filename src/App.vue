@@ -3,9 +3,8 @@
         <!-- <x-address @change="selectAddress"></x-address> -->
         <div id="address" v-text="selectedAddress"></div>
         <button @click="showpop">showpop</button>
-        <div class="mask" v-show="popstatus">
+        <div class="mask" v-show="popstatus" @click="closeMask">
             <div class="popup">
-                <h2>选择地址</h2>
                 <x-address @change="selectAddress" @close="closeMask"></x-address>
             </div>
         </div>
@@ -78,13 +77,6 @@
             min-width: 100%;
             min-height: 200px;
         }
-    }
-    .popup h2 {
-        margin: 0;
-        margin-bottom: 8px; 
-        font-size: 16px;
-        line-height: 24px;
-        border-bottom: solid 1px #ddd;
     }
     .popup .btns {
         margin-top: 50px;
