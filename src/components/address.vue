@@ -175,7 +175,7 @@ export default {
     padding: 2px;
     width: 32%;
     overflow:auto;
-    height: -webkit-fill-available;
+    height: inherit;
 }
 .select-area li {
   list-style-type:none;
